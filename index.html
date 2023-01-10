@@ -2,7 +2,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/scroll-down.css" />
+        <link rel="stylesheet" href="css/fade-in.css" />
     </head>
     <body>
         <h1>Understanding Git and Github</h1>
@@ -83,7 +85,7 @@
                     </ol>
                 </div>
                 <img
-                    src="source control tab in vs code.png"
+                    src="images/source control tab in vs code.png"
                     alt="The source control tab in visual studio code that shows the initialise button and a upload to GitHub button."
                 />
                 <div>
@@ -106,27 +108,50 @@
                             In the dialog that pops up click
                             <q>Choose...</q> and navigate to the project folder
                         </li>
-                        <li>A warning will appear stating the folder is not a git repository. Click the <q>create repository</q> link in the warning
+                        <li>
+                            A warning will appear stating the folder is not a
+                            git repository. Click the
+                            <q>create repository</q> link in the warning
                             <ul>
                                 <li>This will show a new dialog</li>
-                                <li>All of the details will be pre populated so you don't have to change anything.</li>
-                                <li>Click the </li>
+                                <li>
+                                    All of the details will be pre populated so
+                                    you don't have to change anything.
+                                </li>
                             </ul>
+                        </li>
+                        <li>
+                            Click the <q>Create Repository</q> Button
+                            <ul>
+                                <li>
+                                    This will create the repository and create
+                                    an initial commit with all of the files in
+                                    the folder
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Finally, to create the repository in GitHub click
+                            the <q>Publish to GitHub</q> button on the top right
                         </li>
                     </ol>
                 </div>
                 <div>
                     <img
-                        src="github desktop add existing.png"
+                        src="images/github desktop add existing.png"
                         alt="The GitHub app with the repo menu open and the add existing repository button highlighted"
                     />
                     <img
-                        src="add local repo dialog.png"
+                        src="images/add local repo dialog.png"
                         alt="Add Local Repository dialog in the GitHub Desktop app"
                     />
                     <img
-                        src="not git warning.png"
+                        src="images/not git warning.png"
                         alt="Add Local Repository dialog in the GitHub Desktop app"
+                    />
+                    <img
+                        src="images/publish repository button.png"
+                        alt="The GitHub app with the publish repository button in the top right highlighted"
                     />
                 </div>
             </div>
@@ -135,25 +160,46 @@
 </html>
 
 <script>
+    /* 
+        JavaScript gives us an IntersectionObserver class that lets
+        us know when an element overlaps with another element. We tell
+        an observer to keep its eye on some html elements. When those elements
+        get too close to another element the observer will let us know.
+    */
+
+    /* 
+        Here we set the options for the observer.
+        By default it will use the viewport (what you can see on screen)
+        as the intersection test.
+        The threshold is how much of our observed element needs to overlap
+        the viewport (or other element if we specified).
+        Currently 30% of the element needs to overlap before we will know.
+    */
     const observerOptions = {
-        threshold: 0.5,
+        threshold: 0.3,
     };
 
+    // This is the callback function that will get called when our
+    // observation criteria is met
     let addIsVisibleClass = (entries, observer) => {
-        console.log("Observing");
         entries
+            //filter out any elements that aren't overlapping
             .filter((entry) => entry.isIntersecting)
             .forEach((entry) => {
+                // Add the is-visible css class to the element
                 entry.target.classList.add("is-visible");
+                // Stop observing it so we keep getting notified
                 observer.unobserve(entry.target);
             });
     };
 
+    // Create the observer class, passing in our callback and options
     let observer = new IntersectionObserver(addIsVisibleClass, observerOptions);
+
+    // Find all html elements that have the class fade-in
     let targets = document.querySelectorAll(".fade-in");
-    console.log(targets);
     targets.forEach((target) => {
-        console.log(target);
+        // Tell our observer to keep its eyes on the fade-in element
         observer.observe(target);
     });
 </script>

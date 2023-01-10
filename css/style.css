@@ -1,0 +1,69 @@
+:root {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 1rem;
+
+    /* 
+        Some font settings based on recommendations
+        by the British Dyslexia Association
+        https://www.bdadyslexia.org.uk/advice/employers/creating-a-dyslexia-friendly-workplace/dyslexia-friendly-style-guide
+    */
+    font-size: 1.2em;
+    line-height: 1.55em; /* font-size + word-spacing ish */
+    letter-spacing: 0.08em; /* Around a third the width of the average letter */
+    word-spacing: 0.32em; /* Around 3.5 times the letter spacing */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    /* A very dark blue so the headings arent as harsh */
+    color: #111133;
+}
+
+article {
+    margin: 2rem 0rem;
+    /* top | left & right | bottom */
+    padding: 0px 1.2rem 0.5rem;
+
+    box-shadow: 5px 5px 8px #444;
+
+    /* Make it look like there is a subtle shadow on the top and left */
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+
+    /* Round the corners */
+    border-radius: 5px;
+}
+
+img {
+    /* Constrain the image size based in the view width and view height */
+    max-width: 33vw;
+    max-height: 50vh;
+
+    /* 
+        Smoothly change the css property values.
+        This makes our image look like it grows when combined
+        with the hover styling below.
+    */
+    transition: 200ms ease-in-out;
+    transform-origin: right;
+}
+
+img:hover {
+    scale: 175%;
+}
+
+.text-image-grid {
+    display: grid;
+    /* Create two columns based on fractions, 2/3 and 1/3 */
+    grid-template-columns: 2fr 1fr;
+    /* Add a gap between the rows and columns of the grid */
+    grid-gap: 1rem;
+}
+
+.text-image-grid img {
+    /* Align the image to the right of the column */
+    justify-self: end;
+}

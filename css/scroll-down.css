@@ -1,0 +1,46 @@
+.scroll-down {
+    /* Use a light font and lighter colour to make it less noticeable */
+    /* The colour meets AA accessibility requirements for contrast */
+    font-family: "Courier New", Courier, monospace;
+    font-weight: lighter;
+    color: #6a6a6a;
+
+    /* Center the text on the screen */
+    display: block;
+    text-align: center;
+
+    /* Reference the key frames defined below */
+    /* keyframes | duration | time effect | iterations */
+    animation: nudge-fade 5s ease-in infinite;
+}
+
+/* 
+    Define the key frames of the animation.
+    30% - The animation starts 30% in where its position is normal and opacity is at 100%
+    40% - The animation then moves the element down and fades it out
+    50% - While the element is hidden it is moved from the bottom to the top
+    60% - The animation then moves the element down and fades it in
+
+    The animation is designed to keep the element in its normal state
+    for two thirds of the time. The actual animation only happens for
+    one third of the time.
+
+*/
+@keyframes nudge-fade {
+    30% {
+        translate: none;
+        opacity: 100%;
+    }
+    40% {
+        translate: 0 10px;
+        opacity: 0%;
+    }
+    50% {
+        translate: 0 -10px;
+        opacity: 0%;
+    }
+    60% {
+        translate: none;
+        opacity: 100%;
+    }
+}

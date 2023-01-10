@@ -1,0 +1,14 @@
+.fade-in {
+    /* The element is initially invisible and moved below its normal position */
+    opacity: 0%;
+    translate: 0 50px;
+    /* Animate between property changes so the dont happen instantly when changed */
+    /* property | duration | time-effect */
+    transition: opacity 500ms ease-in, translate 500ms ease;
+}
+
+.fade-in.is-visible {
+    /* Make the element opaque and move it to its normal position */
+    opacity: 100%;
+    translate: none;
+}
