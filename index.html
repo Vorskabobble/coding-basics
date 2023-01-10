@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <h1>Understanding Git and Github</h1>
+        <article>
+            <h2>Git and GitHub</h2>
+            <h3>What is git?</h3>
+            <p>
+                Git is a tool that is used to manage and version the source
+                files to software. It is able to track the changes in a file and
+                allows you to commit those changes which is like taking a
+                snapshot in time of the code. This can then be revisited,
+                compared and even used to overwrite later changes.
+            </p>
+            <p>
+                Git works using repositories which are like a folder on your
+                computer. Each repository holds all the files for your project
+                and some secret files 🤫 git uses to track the history of the
+                repository.
+            </p>
+            <h3>What is GitHub?</h3>
+            <p>
+                GitHub is an online tool that hosts git repositories. This
+                allows you to collaborate with other people in the same codebase
+                easily.
+            </p>
+        </article>
+
+        <span class="scroll-down">SCROLL DOWN</span>
+
+        <article class="fade-in">
+            <h2>Creating a new repository with existing code</h2>
+            <p>
+                There are two main steps when creating a repository from
+                existing code. Turning your existing project into a git repo and
+                uploading that to a repo in GitHub which will also need
+                creating. A lot of devs and tutorials use the git command line
+                interface (CLI) as this is the original git tool. It can however
+                be simpler to use a tool such as GitHub Desktop or Visual Studio
+                Code.
+            </p>
+
+            <div class="text-image-grid">
+                <div>
+                    <h3>Using VS Code</h3>
+                    <p>
+                        VS Code has a built in interface for using git which can
+                        also be used for initialising repositories and uploading
+                        them directly to GitHub. This option will require the
+                        git CLI to be installed as that is what VSCode uses
+                        under the hood.
+                    </p>
+                    <ol>
+                        <li>Open the project in VSCode</li>
+                        <li>
+                            Navigate to the Source Control tab as seen in the
+                            image
+                        </li>
+                        <li>
+                            <ul>
+                                <li>
+                                    Click the the
+                                    <q>Initialise Repository</q> button if you
+                                    just want to add git
+                                </li>
+                                <li>
+                                    Click the <q>Publish to Github</q> button to
+                                    upload it directly to GitHub. Note the
+                                    repository name will be the same as the
+                                    folder.
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            If you initialised the repo you will have to commit
+                            your files and publish it the GitHub. Steps can be
+                            found in the next section.
+                        </li>
+                    </ol>
+                </div>
+                <img
+                    src="source control tab in vs code.png"
+                    alt="The source control tab in visual studio code that shows the initialise button and a upload to GitHub button."
+                />
+                <div>
+                    <h3>Using the GitHub Desktop app</h3>
+                    <p>
+                        The GitHub desktop app can be a bit trickier to use to
+                        add git to a new repository. The most fool proof way is
+                        documented below but it isn't the only way.
+                    </p>
+                    <ol>
+                        <li>
+                            Click the <q>Current Repository</q> button in the
+                            top left
+                        </li>
+                        <li>
+                            Click <q>Add</q> and then
+                            <q>Add Existing Repository...</q>
+                        </li>
+                        <li>
+                            In the dialog that pops up click
+                            <q>Choose...</q> and navigate to the project folder
+                        </li>
+                        <li>A warning will appear stating the folder is not a git repository. Click the <q>create repository</q> link in the warning
+                            <ul>
+                                <li>This will show a new dialog</li>
+                                <li>All of the details will be pre populated so you don't have to change anything.</li>
+                                <li>Click the </li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+                <div>
+                    <img
+                        src="github desktop add existing.png"
+                        alt="The GitHub app with the repo menu open and the add existing repository button highlighted"
+                    />
+                    <img
+                        src="add local repo dialog.png"
+                        alt="Add Local Repository dialog in the GitHub Desktop app"
+                    />
+                    <img
+                        src="not git warning.png"
+                        alt="Add Local Repository dialog in the GitHub Desktop app"
+                    />
+                </div>
+            </div>
+        </article>
+    </body>
+</html>
+
+<script>
+    const observerOptions = {
+        threshold: 0.5,
+    };
+
+    let addIsVisibleClass = (entries, observer) => {
+        console.log("Observing");
+        entries
+            .filter((entry) => entry.isIntersecting)
+            .forEach((entry) => {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+            });
+    };
+
+    let observer = new IntersectionObserver(addIsVisibleClass, observerOptions);
+    let targets = document.querySelectorAll(".fade-in");
+    console.log(targets);
+    targets.forEach((target) => {
+        console.log(target);
+        observer.observe(target);
+    });
+</script>
